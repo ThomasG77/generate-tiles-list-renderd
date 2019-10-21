@@ -51,3 +51,10 @@ You may look at `man render_expired` to learn how to expire by zoom level. If yo
 	# Use the list, filter only level 10 and expire the tiles
     cat /tmp/list_tiles.txt | grep '^10/' | render_expired --num-threads=4 --map=osmbright --tile-dir=/var/lib/mod_tile
 
+## Export meta tiles to XYZ
+
+If you compile your own mod_tile (https://github.com/openstreetmap/mod_tile/), in your local copy, you can cd into `extra` directory and run `make`. Then, you are able to export meta file to standard xyz. It can be useful to host these tiles to a third-party server or push the images to mbtiles.
+
+    # If you have some local cache in /var/lib/mod_tile/default
+    mkdir /tmp/mytiles
+    ./meta2tile -v /var/lib/mod_tile/default /tmp/mytiles
